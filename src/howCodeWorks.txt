@@ -1,0 +1,59 @@
+I have my app component My search box, and my card list. Any time the search box changes, on change I'm going to run the function, I'm
+
+going to call this function in the Searchbox.js(onChange= {searchChange} ) And the way we call it is we add onChange= {searchChange()} , how when we did in the DOM events we defined the function and then every time the event happens it would call it "()".
+
+So we are saying every time the onchange event is triggered, call the searchChange function
+The searchChange function which is a prop is the "onSearchChange" function that is defined in the app
+
+That's how we communicate with the parent
+
+It triggers the event, the parent says "Oh, run this function" And now this function gets run
+
+But now that I have the value of the search input, I can now directly communicate that search input to the "robots" list
+
+Let's see how that works
+
+
+
+-----------Final Review--------------------
+
+We have our "App" component that has two states - "robots" and "searchfield" And because "App" owns the state, any component that has "state" uses the "class" syntax so they can use the "constructor" function to create "this.state", and this "state" is what changes in an app.
+
+
+Example virtual DOM is just a javascript object, The virtual DOM is just an object that collects this entire state and React uses this state to render and pass them down as props to these components so that these components that are just pure functions can just render and we always know that the app is going to look the same because, they're just simple pure functions.
+
+We manage this state in here, the app is the only thing that can change this state, But it can pass down things such as props, so we passed down "onSearchChange()" to the "SearchBox.js" in render(), and the
+"SearchBox", every time there's an "onChange" on the input, it lets the app know "Hey, there was a change", "Run this function"
+
+It runs the function onSearchChange() with the event and updates the state of the "searchfield" to whatever we type
+
+Now with the information that we have from the search box we can now communicate to the card list and tell it "Hey, I want to filter the "robots" state to now have only what includes in the "searchfield". We create a new array called "filterRobots" usinf the filter() function and we pass that down instead of passing that "this.state" to our "robots" in the 
+ <CardList robots= {
+		  	//this.state.robots
+             filteredrobots }/>
+we just passed the "filteredRobots".
+
+----------------------------------------------
+
+Now this is a simple app.
+
+It allows you to search.
+
+It allows you to scroll but it does show the power of React, doesn't it?
+
+We've created these simple functions and the only thing that we tell it to do is,
+
+well, we tell it what state it has. The entire app is described through these two things.
+
+The "robots" and "searchfield" and React takes care of the rest. As soon as "searchfield" or "robots" changes,
+
+React trickles down
+
+All this information as "props" to all these components and magically creates our view for us.
+
+That's why React is so powerful it's a view layer.
+
+It takes care of manipulating the DOM and all we tell it is "Hey, what's the state?"
+
+"What are the functions that you wanted to work with the state?" and the rest?
+
